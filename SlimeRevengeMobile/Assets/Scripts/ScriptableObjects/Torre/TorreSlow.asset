@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5474735d4bbd0f74db35b3649a9b2a98, type: 3}
   m_Name: TorreSlow
   m_EditorClassIdentifier: 
-  id: 0
-  velocidadeDeAtaque: 0
-  alcance: 0
+  id: 1
+  velocidadeDeAtaque: 1
+  alcance: 10
   arteTorre: {fileID: 0}
   projetil: {fileID: 0}

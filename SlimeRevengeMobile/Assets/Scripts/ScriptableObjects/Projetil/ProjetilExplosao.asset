@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b056a4cf9f0320f4d8a4601ea1331809, type: 3}
   m_Name: ProjetilExplosao
   m_EditorClassIdentifier: 
-  dano: 0
-  velocidade: 0
-  raioColisao: 0
+  dano: 10
+  velocidade: 10
+  raioColisao: 10
+  arteProjetil: {fileID: 0}
