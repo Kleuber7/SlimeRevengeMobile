@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TorreExplosao
   m_EditorClassIdentifier: 
   id: 0
-  velocidadeDeAtaque: 0
-  alcance: 0
+  velocidadeDeAtaque: 1
+  alcance: 10
   arteTorre: {fileID: 0}
   projetil: {fileID: 0}
