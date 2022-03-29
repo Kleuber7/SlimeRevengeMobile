@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285d6b16d3de0844aa84c65a57ff8e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  statusEnemy: {fileID: 11400000, guid: 1419350222f6a254298fae7f6266832d, type: 2}
   distanceToWayPoint: 0.2
 --- !u!114 &1195314906
 MonoBehaviour:
@@ -1336,7 +1336,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d2190e0bbf299b6478e49d04a652771d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

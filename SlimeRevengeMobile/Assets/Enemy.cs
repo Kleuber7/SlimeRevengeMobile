@@ -1,24 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed = 10f;
+    public EnemySO statusEnemy;
     public float distanceToWayPoint = 0.2f;
+    
 
     private Transform target;
     private int wavepointIndex = 0;
 
     private void Start()
     {
+        GetComponent<Image>().sprite = statusEnemy.art;
         target = WayPoints.points[0];
     }
 
     private void Update()
     {
         Vector2 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        transform.Translate(dir.normalized * statusEnemy.speed * Time.deltaTime, Space.World);
 
         if(Vector2.Distance(transform.position, target.position) <= distanceToWayPoint)
         {
