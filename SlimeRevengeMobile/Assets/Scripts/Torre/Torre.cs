@@ -9,7 +9,7 @@ public class Torre : MonoBehaviour
     public float velocidadeDeAtaque;
     public float alcance;
     public Image arteTorre;
-    public ProjetilSO projetil;
+    public Projetil[] projeteis;
     public TorreSO torreSO;
 
     [Header ("Mecânicas usam (Precisam ser setados)")]
@@ -21,6 +21,5 @@ public class Torre : MonoBehaviour
         velocidadeDeAtaque = torreSO.velocidadeDeAtaque;
         alcance = torreSO.alcance;
         arteTorre.sprite = torreSO.arteTorre;
-        projetil = torreSO.projetil;
     }
 }
