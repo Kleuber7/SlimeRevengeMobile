@@ -11,43 +11,76 @@ public class Enemy : MonoBehaviour
     private Transform targetTower;
     private int wavepointIndex = 0;
     private int towerpointIndex = 0;
+    public bool canGo = true;
 
     public WayPoints waypoints;
 
     public float RaycastDistance = 5f;
 
-    public LayerMask layer1, layer2, layer3;
+    public Torre torre;
+    public string nameTower;
+
+    public LayerMask layerGo, layer1, layer2, layer3;
 
     private void Start()
     {
         GetComponent<Image>().sprite = statusEnemy.art;
         target = waypoints.points1[0];
+        layerGo = layer1;
 
     }
 
     private void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, RaycastDistance, layer1);
-        if (hit == false)
-        {
-            Vector2 dir = target.position - transform.position;
-            transform.Translate(dir.normalized * statusEnemy.speed * Time.deltaTime, Space.World);
 
-            if (Vector2.Distance(transform.position, target.position) <= distanceToWayPoint)
-            {
-                GetNextWayPoint1();
-            }
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, RaycastDistance, layerGo);
+        if (hit == false && canGo)
+        {
+            torre = null;
+            Vector2 dir = target.position - transform.position;
+            transform.Translate(dir.normalized * statusEnemy.speed * Time.deltaTime);
         }
-        if (Physics2D.Raycast(transform.position, transform.forward, RaycastDistance, layer2) == false)
+        else
         {
-            if (Vector2.Distance(transform.position, target.position) <= distanceToWayPoint)
-            {
-                GetNextWay2();
-            }
+            canGo = false;
 
+            if (torre == null)
+                torre = hit.collider.GetComponent<Torre>();
+
+            int r = Random.Range(0, torre.nextTarget.Length);
+
+            target = torre.nextTarget[r];
             Vector2 dir = target.position - transform.position;
-            transform.Translate(dir.normalized * statusEnemy.speed * Time.deltaTime, Space.World);
+            transform.Translate(dir.normalized * statusEnemy.speed * Time.deltaTime);
+            if (Vector2.Distance(transform.position, target.position) <= 0.1f)
+            {
+                if (torre.numberOfLayer == 1)
+                {
+                    layerGo = layer1;
+                }
+                else if (torre.numberOfLayer == 2)
+                {
+                    layerGo = layer2;
+                }
+                else if (torre.numberOfLayer == 3)
+                {
+                    layerGo = layer3;
+                }
 
+                if (layerGo == layer1)
+                {
+                    target = waypoints.points1[0];
+                }
+                else if (layerGo == layer2)
+                {
+                    target = waypoints.points2[0];
+                }
+                else if (layerGo == layer3)
+                {
+                    target = waypoints.points3[0];
+                }
+                canGo = true;
+            }
         }
 
     }
@@ -87,4 +120,23 @@ public class Enemy : MonoBehaviour
 
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * RaycastDistance);
     }
+
+
+    //    Vector2 dir = target.position - transform.position;
+    //    transform.Translate(dir.normalized * statusEnemy.speed * Time.deltaTime, Space.World);
+
+    //    if (Vector2.Distance(transform.position, target.position) <= distanceToWayPoint)
+    //    {
+    //        GetNextWayPoint1();
+    //    }
+    //}
+    //if (Physics2D.Raycast(transform.position, transform.forward, RaycastDistance, layer2) == false)
+    //{
+    //    if (Vector2.Distance(transform.position, target.position) <= distanceToWayPoint)
+    //    {
+    //        GetNextWay2();
+    //    }
+
+    //    Vector2 dir = target.position - transform.position;
+    //    transform.Translate(dir.normalized * statusEnemy.speed * Time.deltaTime, Space.World);
 }

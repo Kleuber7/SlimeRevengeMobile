@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1005,6 +1005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 997997734}
   - component: {fileID: 997997735}
+  - component: {fileID: 997997736}
   m_Layer: 6
   m_Name: TowerOne
   m_TagString: Tower
@@ -1023,7 +1024,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35478, y: 0.35478, z: 0.35478}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2069197242}
   m_Father: {fileID: 1184137294}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1056,8 +1058,30 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 100, y: 100}
+  m_Size: {x: 227.6, y: 100}
   m_EdgeRadius: 0
+--- !u!114 &997997736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997997733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd03b2e8920c5348a538e47a45d23f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidadeDeAtaque: 0
+  alcance: 0
+  arteTorre: {fileID: 0}
+  projeteis: []
+  torreSO: {fileID: 11400000, guid: 829764b29b09c1643b5636d5ad2c6755, type: 2}
+  alvo: {fileID: 0}
+  pontoDisparo: {fileID: 0}
+  nextTarget:
+  - {fileID: 2069197242}
+  numberOfLayer: 2
 --- !u!1 &1013542450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,8 +1284,14 @@ MonoBehaviour:
   statusEnemy: {fileID: 11400000, guid: 1419350222f6a254298fae7f6266832d, type: 2}
   distanceToWayPoint: 0.2
   distanceToTower: 0.5
+  canGo: 1
   waypoints: {fileID: 1977367873}
   RaycastDistance: 5
+  torre: {fileID: 0}
+  nameTower: 
+  layerGo:
+    serializedVersion: 2
+    m_Bits: 64
   layer1:
     serializedVersion: 2
     m_Bits: 64
@@ -1270,7 +1300,7 @@ MonoBehaviour:
     m_Bits: 128
   layer3:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!114 &1195314906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1534,28 +1564,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points1:
   - {fileID: 590868623}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   points2:
   - {fileID: 1626884575}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   points3:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 615363652}
-  way1: {fileID: 1013542451}
-  way2: {fileID: 1340990324}
-  way3: {fileID: 771977143}
+--- !u!1 &2069197241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2069197242}
+  m_Layer: 6
+  m_Name: TargetOne
+  m_TagString: Tower
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2069197242
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069197241}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 997997734}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -149, y: 259}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2069678937
 GameObject:
   m_ObjectHideFlags: 0
@@ -1574,7 +1622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2069678938
 MonoBehaviour:
   m_ObjectHideFlags: 0

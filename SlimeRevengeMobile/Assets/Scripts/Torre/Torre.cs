@@ -16,6 +16,9 @@ public class Torre : MonoBehaviour
     public GameObject alvo;
     public Transform pontoDisparo;
 
+    public Transform[] nextTarget;
+    public float numberOfLayer; 
+
     void Start()
     {
         velocidadeDeAtaque = torreSO.velocidadeDeAtaque;
