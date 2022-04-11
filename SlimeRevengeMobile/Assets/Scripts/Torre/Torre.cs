@@ -15,9 +15,9 @@ public class Torre : MonoBehaviour
     [Header ("Mecânicas usam (Precisam ser setados)")]
     public GameObject alvo;
     public Transform pontoDisparo;
-
     public Transform[] nextTarget;
-    public float numberOfLayer; 
+    public float numberOfLayer;
+    public float tempoRecargaInvocacao;
 
     void Start()
     {

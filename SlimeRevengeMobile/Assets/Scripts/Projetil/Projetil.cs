@@ -12,14 +12,21 @@ public class Projetil : MonoBehaviour
     public ProjetilSO projetilSO;
     public Torre torre;
     public bool disparado;
+    public Vector3 posicaoInicial;
 
     private void Start() 
     {
+        posicaoInicial = transform.position;
         dano = projetilSO.dano;
         velocidade = projetilSO.velocidade;
         raioDeColisao = projetilSO.raioColisao;
         arteProjetil.sprite = projetilSO.arteProjetil;
         disparado = true;
+    }
+
+    private void OnEnable() 
+    {
+        StartCoroutine(TempoExpira());
     }
 
     private void FixedUpdate() 
@@ -32,6 +39,22 @@ public class Projetil : MonoBehaviour
 
     public void Disparo()
     {
-        transform.Translate(Vector2.left * velocidade * Time.fixedDeltaTime);
+        transform.Translate(Vector2.right * velocidade * Time.fixedDeltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
+        if(other.gameObject.tag == "Inimigo")
+        {
+            this.gameObject.SetActive(false);
+            transform.position = posicaoInicial;
+        }
+    }
+
+    IEnumerator TempoExpira()
+    {
+        yield return new WaitForSeconds(5);
+        this.gameObject.SetActive(false);
+        transform.position = posicaoInicial;
     }
 }

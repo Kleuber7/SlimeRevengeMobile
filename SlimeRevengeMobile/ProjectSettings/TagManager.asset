@@ -5,11 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Tower
+  - Torneira
+  - Inimigo
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Inimigo
   - Water
   - UI
   - FirstWay
