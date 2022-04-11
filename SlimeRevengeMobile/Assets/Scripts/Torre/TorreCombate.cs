@@ -5,7 +5,6 @@ using UnityEngine;
 public class TorreCombate : MonoBehaviour
 {
     public Torre torre;
-    public LayerMask layer;
     public bool invasaoDePerimetro;
     public int municao;
     public float tempoRecargaMunicao;
@@ -21,21 +20,6 @@ public class TorreCombate : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, torre.alcance);
-        if(hit)
-        {
-            if(hit.collider.gameObject.tag == "Inimigo")
-            {
-                invasaoDePerimetro = true;
-                torre.alvo = hit.collider.gameObject;
-            }
-            else
-            {
-                invasaoDePerimetro = false;
-                torre.alvo = null;
-            }
-        }
-
         if(invasaoDePerimetro)
         {
             if(podeAtirar)
@@ -45,10 +29,30 @@ public class TorreCombate : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other) 
+    {
+        if(other.gameObject.tag == "Inimigo")
+        {
+            invasaoDePerimetro = true;
+            torre.alvo = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) 
+    {
+        if(other.gameObject.tag == "Inimigo")
+        {
+            invasaoDePerimetro = false;
+            torre.alvo = null;
+        }
+    }
+
     IEnumerator Fogo()
     {
         podeAtirar = false;
         yield return new WaitForSeconds(1/torre.velocidadeDeAtaque);
+        if(!invasaoDePerimetro)
+        yield return null;
         torre.projeteis[municao].gameObject.SetActive(true);
         municao--;
         if(municao < 0)

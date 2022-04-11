@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2212129510495838703}
   - component: {fileID: 2212129510495838700}
   - component: {fileID: 2212129510495838701}
+  - component: {fileID: 8548842842349638007}
+  - component: {fileID: 64287713313315326}
   m_Layer: 5
   m_Name: TorreExplosao
   m_TagString: Untagged
@@ -28,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 2212129510495838699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5507393790023436268}
@@ -38,7 +40,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2212129510495838703
 CanvasRenderer:
@@ -68,9 +70,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b6a2b4de4fc3f654185838d542b9ccb4, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -91,8 +93,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadeDeAtaque: 0
-  alcance: 0
-  arteTorre: {fileID: 0}
+  alcance: 10
+  arteTorre: {fileID: 2212129510495838700}
   projeteis:
   - {fileID: 4958340252151983808}
   - {fileID: 3862643375768122837}
@@ -100,6 +102,53 @@ MonoBehaviour:
   torreSO: {fileID: 11400000, guid: 829764b29b09c1643b5636d5ad2c6755, type: 2}
   alvo: {fileID: 0}
   pontoDisparo: {fileID: 0}
+  nextTarget: []
+  numberOfLayer: 0
+  tempoRecargaInvocacao: 5
+--- !u!114 &8548842842349638007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2212129510495838699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a47210d046eb9c48a68d896ea011930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torre: {fileID: 2212129510495838701}
+  invasaoDePerimetro: 0
+  municao: 0
+  tempoRecargaMunicao: 3
+  recarregando: 0
+  podeAtirar: 0
+--- !u!61 &64287713313315326
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2212129510495838699}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 100, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 200, y: 30}
+  m_EdgeRadius: 0
 --- !u!1 &8771503330167395739
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +186,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &226794344787313105
 PrefabInstance:
@@ -188,11 +237,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9148706798326529138, guid: e43e8f8c2c606a54fa686ccd05f6876d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9148706798326529138, guid: e43e8f8c2c606a54fa686ccd05f6876d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9148706798326529138, guid: e43e8f8c2c606a54fa686ccd05f6876d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -309,11 +358,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9148706798326529138, guid: e43e8f8c2c606a54fa686ccd05f6876d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9148706798326529138, guid: e43e8f8c2c606a54fa686ccd05f6876d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9148706798326529138, guid: e43e8f8c2c606a54fa686ccd05f6876d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -430,11 +479,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9148706798326529138, guid: e43e8f8c2c606a54fa686ccd05f6876d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9148706798326529138, guid: e43e8f8c2c606a54fa686ccd05f6876d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9148706798326529138, guid: e43e8f8c2c606a54fa686ccd05f6876d, type: 3}
       propertyPath: m_LocalPosition.x

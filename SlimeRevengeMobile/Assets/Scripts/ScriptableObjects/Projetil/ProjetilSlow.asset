@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ProjetilSlow
   m_EditorClassIdentifier: 
   dano: 10
-  velocidade: 10
+  velocidade: 20
   raioColisao: 10
-  arteProjetil: {fileID: 0}
+  arteProjetil: {fileID: 21300000, guid: b73651002d7e0754fa56104b80b0af2c, type: 3}
