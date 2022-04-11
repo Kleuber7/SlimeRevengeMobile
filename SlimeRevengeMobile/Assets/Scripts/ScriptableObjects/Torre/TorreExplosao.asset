@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 0
   velocidadeDeAtaque: 1
   alcance: 10
-  arteTorre: {fileID: 0}
-  projetil: {fileID: 0}
+  arteTorre: {fileID: 21300000, guid: b6a2b4de4fc3f654185838d542b9ccb4, type: 3}
+  projetil: {fileID: 11400000, guid: e1cea0104400fa54bb8e3a9ed364a2fe, type: 2}

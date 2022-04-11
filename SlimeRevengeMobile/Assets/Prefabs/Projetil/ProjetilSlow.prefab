@@ -93,10 +93,11 @@ MonoBehaviour:
   dano: 0
   velocidade: 0
   raioDeColisao: 0
-  arteProjetil: {fileID: 0}
+  arteProjetil: {fileID: 2682279130610495953}
   projetilSO: {fileID: 11400000, guid: 3a26135c6f8426347b6d15335c00b5fd, type: 2}
   torre: {fileID: 0}
   disparado: 0
+  posicaoInicial: {x: 0, y: 0, z: 0}
 --- !u!58 &9099693118563513837
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -112,4 +113,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 50
+  m_Radius: 10
