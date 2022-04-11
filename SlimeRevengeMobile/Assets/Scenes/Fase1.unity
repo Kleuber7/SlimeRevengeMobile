@@ -1286,7 +1286,7 @@ MonoBehaviour:
   distanceToTower: 0.5
   canGo: 1
   waypoints: {fileID: 1977367873}
-  RaycastDistance: 5
+  RaycastDistance: 100
   torre: {fileID: 0}
   nameTower: 
   layerGo:
