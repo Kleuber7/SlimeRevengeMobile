@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     public Torre torre;
     public string nameTower;
 
-    public LayerMask layerGo, layer1, layer2, layer3;
+    public LayerMask layerGo, layer1, layer2, layer3, layer4;
 
     private void Start()
     {
@@ -66,6 +66,10 @@ public class Enemy : MonoBehaviour
                 {
                     layerGo = layer3;
                 }
+                else if (torre.numberOfLayer == 4)
+                {
+                    layerGo = layer4;
+                }
 
                 if (layerGo == layer1)
                 {
@@ -79,6 +83,11 @@ public class Enemy : MonoBehaviour
                 {
                     target = waypoints.points3[0];
                 }
+                else if (layerGo == layer4)
+                {
+                    target = waypoints.points4[0];
+                }
+
                 canGo = true;
             }
         }

@@ -7,5 +7,5 @@ public class WayPoints : MonoBehaviour
     public Transform[] points1;
     public Transform[] points2;
     public Transform[] points3;
-
+    public Transform[] points4;
 }
