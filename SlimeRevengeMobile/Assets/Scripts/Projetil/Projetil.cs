@@ -14,7 +14,7 @@ public class Projetil : MonoBehaviour
     public bool disparado;
     public Vector3 posicaoInicial;
 
-    private void Start() 
+    private void Start()
     {
         posicaoInicial = transform.position;
         dano = projetilSO.dano;
@@ -24,12 +24,12 @@ public class Projetil : MonoBehaviour
         disparado = true;
     }
 
-    private void OnEnable() 
+    private void OnEnable()
     {
         StartCoroutine(TempoExpira());
     }
 
-    private void FixedUpdate() 
+    private void FixedUpdate()
     {
         if(disparado)
         {
@@ -46,6 +46,7 @@ public class Projetil : MonoBehaviour
     {
         if(other.gameObject.tag == "Inimigo")
         {
+            other.gameObject.GetComponent<Enemy>().TakeDamage(dano);
             this.gameObject.SetActive(false);
             transform.position = posicaoInicial;
         }

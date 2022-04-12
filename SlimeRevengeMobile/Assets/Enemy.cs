@@ -20,7 +20,10 @@ public class Enemy : MonoBehaviour
     public Torre torre;
     public string nameTower;
 
-    public LayerMask layerGo, layer1, layer2, layer3, layer4;
+
+    public LayerMask layerGo, layer1, layer2, layer3, layer4, layer5;
+
+    public float health, maxHealth;
 
     private void Start()
     {
@@ -28,10 +31,14 @@ public class Enemy : MonoBehaviour
         target = waypoints.points1[0];
         layerGo = layer1;
 
+        maxHealth = statusEnemy.maxHealth;
+        statusEnemy.health = maxHealth;
+        health = statusEnemy.health;
     }
 
     private void Update()
     {
+        CheckDeath();
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, RaycastDistance, layerGo);
         if (hit == false && canGo)
@@ -71,6 +78,11 @@ public class Enemy : MonoBehaviour
                     layerGo = layer4;
                 }
 
+                else if (torre.numberOfLayer == 5)
+                {
+                    layerGo = layer5;
+                }
+
                 if (layerGo == layer1)
                 {
                     target = waypoints.points1[0];
@@ -86,6 +98,11 @@ public class Enemy : MonoBehaviour
                 else if (layerGo == layer4)
                 {
                     target = waypoints.points4[0];
+                }
+
+                else if (layerGo == layer5)
+                {
+                    target = waypoints.points5[0];
                 }
 
                 canGo = true;
@@ -148,4 +165,22 @@ public class Enemy : MonoBehaviour
 
     //    Vector2 dir = target.position - transform.position;
     //    transform.Translate(dir.normalized * statusEnemy.speed * Time.deltaTime, Space.World);
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+    }
+
+    public void CheckDeath()
+    {
+        if(health <= 0)
+        {
+            Death();
+        }
+    }
+
+    public void Death()
+    {
+        this.gameObject.SetActive(false);
+    }
 }
