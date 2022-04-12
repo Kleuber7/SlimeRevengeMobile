@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70608280d84133b49a6bc9e77bd7f9f0, type: 3}
-  m_Name: Enemy
+  m_Name: EnemyBrutamontes
   m_EditorClassIdentifier: 
   damage: 10
   speed: 30
-  art: {fileID: 21300000, guid: d2190e0bbf299b6478e49d04a652771d, type: 3}
+  art: {fileID: 21300000, guid: 5ce4d314cc9bf7741930e334f82d37c2, type: 3}
+  health: 100
+  maxHealth: 100
