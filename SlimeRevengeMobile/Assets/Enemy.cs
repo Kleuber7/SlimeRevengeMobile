@@ -7,23 +7,24 @@ public class Enemy : MonoBehaviour
     public float distanceToWayPoint = 0.2f;
     public float distanceToTower = 0.2f;
 
-    private Transform target;
+    public Transform target;
     private Transform targetTower;
     private int wavepointIndex = 0;
     private int towerpointIndex = 0;
     public bool canGo = true;
+    public bool checkR = false;
 
     public WayPoints waypoints;
 
     public float RaycastDistance = 5f;
 
     public Torre torre;
-    public string nameTower;
 
 
     public LayerMask layerGo, layer1, layer2, layer3, layer4, layer5;
 
     public float health, maxHealth;
+    public int saveLayer;
 
     private void Start()
     {
@@ -54,34 +55,41 @@ public class Enemy : MonoBehaviour
             if (torre == null)
                 torre = hit.collider.GetComponent<Torre>();
 
-            int r = Random.Range(0, torre.nextTarget.Length);
-
-            target = torre.nextTarget[r];
+            if (!checkR)
+            {
+                int r = Random.Range(0, torre.nextTarget.Length);
+                target = torre.nextTarget[r];
+                saveLayer = torre.nextTarget[r].GetComponent<NextTarget>().numberOfNextLayer;
+                checkR = true;
+            }
+            
             Vector2 dir = target.position - transform.position;
             transform.Translate(dir.normalized * statusEnemy.speed * Time.deltaTime);
+
+           
             if (Vector2.Distance(transform.position, target.position) <= 0.1f)
             {
-                if (torre.numberOfLayer == 1)
+                if (saveLayer == 1)
                 {
                     layerGo = layer1;
                 }
-                else if (torre.numberOfLayer == 2)
+                else if (saveLayer == 2)
                 {
                     layerGo = layer2;
                 }
-                else if (torre.numberOfLayer == 3)
+                else if (saveLayer == 3)
                 {
                     layerGo = layer3;
                 }
-                else if (torre.numberOfLayer == 4)
+                else if (saveLayer == 4)
                 {
                     layerGo = layer4;
                 }
-
-                else if (torre.numberOfLayer == 5)
+                else if (saveLayer == 5)
                 {
                     layerGo = layer5;
                 }
+
 
                 if (layerGo == layer1)
                 {
@@ -106,65 +114,10 @@ public class Enemy : MonoBehaviour
                 }
 
                 canGo = true;
+                checkR = false;
             }
         }
-
     }
-
-    void GetNextWayPoint1()
-    {
-        if (wavepointIndex >= waypoints.points1.Length - 1)
-        {
-            gameObject.SetActive(false);
-            return;
-        }
-        wavepointIndex++;
-
-        target = waypoints.points1[wavepointIndex - 1];
-    }
-
-
-    void GetNextWay2()
-    {
-        if (wavepointIndex >= waypoints.points2.Length - 1)
-        {
-            gameObject.SetActive(false);
-            return;
-        }
-
-        target = waypoints.points2[wavepointIndex - 1];
-        wavepointIndex++;
-
-    }
-
-
-
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward * RaycastDistance);
-    }
-
-
-    //    Vector2 dir = target.position - transform.position;
-    //    transform.Translate(dir.normalized * statusEnemy.speed * Time.deltaTime, Space.World);
-
-    //    if (Vector2.Distance(transform.position, target.position) <= distanceToWayPoint)
-    //    {
-    //        GetNextWayPoint1();
-    //    }
-    //}
-    //if (Physics2D.Raycast(transform.position, transform.forward, RaycastDistance, layer2) == false)
-    //{
-    //    if (Vector2.Distance(transform.position, target.position) <= distanceToWayPoint)
-    //    {
-    //        GetNextWay2();
-    //    }
-
-    //    Vector2 dir = target.position - transform.position;
-    //    transform.Translate(dir.normalized * statusEnemy.speed * Time.deltaTime, Space.World);
 
     public void TakeDamage(float damage)
     {
