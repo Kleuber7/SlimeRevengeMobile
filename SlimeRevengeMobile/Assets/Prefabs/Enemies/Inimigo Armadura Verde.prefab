@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3649567576339491845}
   - component: {fileID: 1316170218777008724}
   m_Layer: 3
-  m_Name: Inimigo Brutamontes
+  m_Name: Inimigo Armadura Verde
   m_TagString: Inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5ce4d314cc9bf7741930e334f82d37c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f30070851411d14aa78686fd833ec55, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285d6b16d3de0844aa84c65a57ff8e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusEnemy: {fileID: 11400000, guid: 1419350222f6a254298fae7f6266832d, type: 2}
+  statusEnemy: {fileID: 11400000, guid: 2ee461852207fce498b125c53b52d6eb, type: 2}
   distanceToWayPoint: 0.2
   distanceToTower: 0.2
   canGo: 1
