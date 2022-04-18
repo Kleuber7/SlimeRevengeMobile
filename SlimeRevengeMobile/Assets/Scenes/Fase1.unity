@@ -986,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2078597178443876621, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 65
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 2078597178443876621, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3533,7 +3533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2078597178443876621, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 65
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 2078597178443876621, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6930,7 +6930,7 @@ RectTransform:
   m_GameObject: {fileID: 1206409318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 806374437}
@@ -7287,9 +7287,17 @@ PrefabInstance:
       propertyPath: nextTarget.Array.data[0]
       value: 
       objectReference: {fileID: 448531664}
+    - target: {fileID: 3516020790586625130, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3516020790586625135, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516020790586625135, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4431806719591363374, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
       propertyPath: m_Layer
@@ -7323,6 +7331,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5359910628377494962, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7698994721632046916, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -7330,6 +7342,14 @@ PrefabInstance:
     - target: {fileID: 7700868905360344195, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
       propertyPath: m_Name
       value: Torneira (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304114985458847726, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585963583806676791, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
@@ -9380,7 +9400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2078597178443876621, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 65
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 2078597178443876621, guid: 3c0e9ce33f05be24d9810684dcff8519, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
