@@ -56,18 +56,27 @@ public class Waves : MonoBehaviour
                 {
                     if(waveAtual.childCount <= inimigosIndex)
                     {
-                        Debug.Log("ultimo inimigo invocado");
-                        if(!waveAtual.GetChild(inimigosIndex - 1).gameObject.activeSelf)
+                        foreach(Transform inimigo in waveAtual)
                         {
-                            Debug.Log("ultimo inimigo morto");
-                            restaInimigos = false;
+                            if(inimigo.gameObject.activeSelf)
+                            {
+                                restaInimigos = true;
+                                break;
+                            }
+                            else
+                            {
+                                restaInimigos = false;
+                            }
+                        }
+
+                        if(!restaInimigos)
+                        {
                             waveIniciada = false;
                             contadorWave = tempoEsperaWave;
                             inimigosIndex = 0;
+                            waveIndex++;
                             if(waveIndex < waves.Length)
                             {
-                                Debug.Log("subiu wave");
-                                waveIndex++;
                                 waveAtual = waves[waveIndex];
                             }
                             else
