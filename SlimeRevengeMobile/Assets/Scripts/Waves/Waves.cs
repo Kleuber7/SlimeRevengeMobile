@@ -15,9 +15,10 @@ public class Waves : MonoBehaviour
     public bool waveIniciada;
     public bool podeInvocar;
     public bool vitoria;
+    public bool startGame;
     public Transform posicaoInicial;
 
-    private void Start() 
+    private void Start()
     {
         waveIndex = 0;
         inimigosIndex = 0;
@@ -26,68 +27,72 @@ public class Waves : MonoBehaviour
         waveIniciada = false;
         podeInvocar = true;
         vitoria = false;
-        if(waveAtual.childCount > 0)
+        if (waveAtual.childCount > 0)
         {
             restaInimigos = true;
         }
     }
 
-    private void FixedUpdate() 
+    private void FixedUpdate()
     {
-        if(!vitoria)
+        if (!vitoria)
         {
-            if(waveIndex >= waves.Length)
+            if (startGame)
             {
-                waveIndex = waves.Length-1;
-            }
-
-            if(contadorWave > 0)
-            {
-                contadorWave -= 1 * Time.fixedDeltaTime;
-            }
-            else
-            {
-                contadorWave = 0;
-                if(!waveIniciada)
+                if (waveIndex >= waves.Length)
                 {
-                    waveIniciada = true;
+                    waveIndex = waves.Length - 1;
+                }
+
+                if (contadorWave > 0)
+                {
+                    contadorWave -= 1 * Time.fixedDeltaTime;
                 }
                 else
                 {
-                    if(waveAtual.childCount <= inimigosIndex)
+                    contadorWave = 0;
+                    if (!waveIniciada)
                     {
-                        foreach(Transform inimigo in waveAtual)
-                        {
-                            if(inimigo.gameObject.activeSelf)
-                            {
-                                restaInimigos = true;
-                                break;
-                            }
-                            else
-                            {
-                                restaInimigos = false;
-                            }
-                        }
-
-                        if(!restaInimigos)
-                        {
-                            waveIniciada = false;
-                            contadorWave = tempoEsperaWave;
-                            inimigosIndex = 0;
-                            waveIndex++;
-                            if(waveIndex < waves.Length)
-                            {
-                                waveAtual = waves[waveIndex];
-                            }
-                            else
-                            {
-                                vitoria = true;
-                            }
-                        }
+                        waveIniciada = true;
                     }
                     else
                     {
-                        Invocar();
+                        if (waveAtual.childCount <= inimigosIndex)
+                        {
+                            foreach (Transform inimigo in waveAtual)
+                            {
+                                if (inimigo.gameObject.activeSelf)
+                                {
+                                    restaInimigos = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    restaInimigos = false;
+                                }
+                            }
+
+                            if (!restaInimigos)
+                            {
+                                waveIniciada = false;
+                                contadorWave = tempoEsperaWave;
+                                inimigosIndex = 0;
+                                waveIndex++;
+                                if (waveIndex < waves.Length)
+                                {
+                                    waveAtual = waves[waveIndex];
+                                }
+                                else
+                                {
+                                    startGame = false;
+                                    vitoria = true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Invocar();
+                        }
                     }
                 }
             }
@@ -96,16 +101,21 @@ public class Waves : MonoBehaviour
 
     public void Invocar()
     {
-        if(podeInvocar)
+        if (podeInvocar)
         {
-            if(waveAtual.childCount > inimigosIndex)
+            if (waveAtual.childCount > inimigosIndex)
             {
                 waveAtual.GetChild(inimigosIndex).gameObject.transform.position = posicaoInicial.position;
                 waveAtual.GetChild(inimigosIndex).gameObject.SetActive(true);
-                inimigosIndex ++;
+                inimigosIndex++;
             }
             StartCoroutine(TempoInvocacaoWave());
         }
+    }
+
+    public void IniciarWave()
+    {
+        startGame = true;
     }
 
     IEnumerator TempoInvocacaoWave()
