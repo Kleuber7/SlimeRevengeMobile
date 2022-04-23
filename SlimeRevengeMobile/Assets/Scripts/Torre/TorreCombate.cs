@@ -10,6 +10,7 @@ public class TorreCombate : MonoBehaviour
     public float tempoRecargaMunicao;
     public bool recarregando;
     public bool podeAtirar;
+    public AnimacaoAldeao animacao;
 
     private void Start() 
     {
@@ -50,11 +51,13 @@ public class TorreCombate : MonoBehaviour
     IEnumerator Fogo()
     {
         podeAtirar = false;
+        animacao.atacar = false;
         yield return new WaitForSeconds(1/torre.velocidadeDeAtaque);
         if(!invasaoDePerimetro)
         yield return null;
         torre.projeteis[municao].gameObject.SetActive(true);
         municao--;
+        animacao.atacar = true;
         if(municao < 0)
         {
             if(!recarregando)
