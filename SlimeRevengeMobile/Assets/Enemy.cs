@@ -9,8 +9,6 @@ public class Enemy : MonoBehaviour
 
     public Transform target;
     private Transform targetTower;
-    private int wavepointIndex = 0;
-    private int towerpointIndex = 0;
     public bool canGo = true;
     public bool checkR = false;
 

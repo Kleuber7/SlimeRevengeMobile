@@ -10,7 +10,7 @@ public class TorreCombate : MonoBehaviour
     public float tempoRecargaMunicao;
     public bool recarregando;
     public bool podeAtirar;
-    public AnimacaoAldeao animacao;
+    public AnimacaoTorres animacao;
 
     private void Start() 
     {
@@ -45,6 +45,8 @@ public class TorreCombate : MonoBehaviour
         {
             invasaoDePerimetro = false;
             torre.alvo = null;
+            animacao.atacar = false;
+            animacao.iddle = true;
         }
     }
 
@@ -54,7 +56,8 @@ public class TorreCombate : MonoBehaviour
         animacao.atacar = false;
         yield return new WaitForSeconds(1/torre.velocidadeDeAtaque);
         if(!invasaoDePerimetro)
-        yield return null;
+            yield return null;
+        
         torre.projeteis[municao].gameObject.SetActive(true);
         municao--;
         animacao.atacar = true;
@@ -64,6 +67,8 @@ public class TorreCombate : MonoBehaviour
             {
                 StartCoroutine(Recarga());
             }
+            animacao.atacar = false;
+            animacao.iddle = true;
         }
         else
         {
