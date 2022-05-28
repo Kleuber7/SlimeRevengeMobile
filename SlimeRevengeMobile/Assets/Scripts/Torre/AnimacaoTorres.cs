@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnimacaoAldeao : MonoBehaviour
+public class AnimacaoTorres : MonoBehaviour
 {
     public bool atacar;
     public bool iddle;
